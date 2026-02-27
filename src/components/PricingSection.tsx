@@ -1,44 +1,52 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Check } from "lucide-react"
-import { QuoteFormDialog } from "@/components/QuoteFormDialog"
+import { Button } from "@/components/ui/button"
 
 const pricingTiers = [
   {
-    name: "Базовый",
-    price: "99 900",
+    name: "Новичок",
+    price: "Бесплатно",
+    description: "Для всех игроков",
     features: [
-      "До 5 страниц",
-      "Адаптивный дизайн",
-      "Базовая SEO-оптимизация",
-      "Форма обратной связи",
-      "1 месяц поддержки",
+      "Полный доступ к игровому миру",
+      "Стартовый набор новичка",
+      "Базовые профессии",
+      "Общий чат и форум",
+      "Поддержка 24/7",
     ],
     highlighted: false,
+    cta: "Начать играть",
   },
   {
-    name: "Про",
-    price: "249 900",
+    name: "VIP",
+    price: "199 ₽/мес",
+    description: "Для преданных игроков",
     features: [
-      "До 15 страниц",
-      "Премиум-дизайн",
-      "Расширенная SEO-оптимизация",
-      "Интеграция CMS",
-      "Функционал e-commerce",
-      "3 месяца поддержки",
+      "Уникальный VIP-тег в чате",
+      "Бонус +25% к зарплате",
+      "Приоритетный вход на сервер",
+      "Эксклюзивные скины авто",
+      "VIP-зона и спецмероприятия",
+      "Кастомный номер авто",
     ],
     highlighted: true,
+    cta: "Получить VIP",
   },
   {
-    name: "Индивидуальный",
-    price: "По запросу",
+    name: "PREMIUM",
+    price: "499 ₽/мес",
+    description: "Для лучших из лучших",
     features: [
-      "Неограниченно страниц",
-      "Кастомный функционал",
-      "API-интеграции",
-      "Персональный менеджер",
-      "6 месяцев поддержки",
+      "Всё из VIP",
+      "Уникальный Premium-тег",
+      "Бонус +50% к зарплате",
+      "Личный гараж на 10 авто",
+      "Эксклюзивные анимации",
+      "Доступ к закрытым ивентам",
+      "Персональный поддержка",
     ],
     highlighted: false,
+    cta: "Получить Premium",
   },
 ]
 
@@ -52,18 +60,19 @@ export function PricingSection() {
 
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-bold mb-4 tracking-widest">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
             </span>
-            Прозрачные цены
+            ПРИВИЛЕГИИ
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-balance">
-            Выберите <span className="text-primary">идеальный тариф</span> для вашего проекта
+            Выбери свой{" "}
+            <span className="text-primary">статус</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            От стартапов до крупного бизнеса — у нас есть подходящее решение
+            Базовая игра полностью бесплатна. Привилегии — только косметика и удобство, никакого преимущества в геймплее
           </p>
         </div>
 
@@ -73,29 +82,20 @@ export function PricingSection() {
               key={index}
               className={`relative group ${
                 tier.highlighted
-                  ? "border-primary shadow-xl scale-105 bg-gradient-to-b from-background to-primary/5"
-                  : "hover:border-primary/50 hover:shadow-lg"
-              } transition-all duration-300`}
+                  ? "border-primary shadow-xl shadow-primary/20 scale-105 bg-gradient-to-b from-card to-primary/5"
+                  : "border-border hover:border-primary/50 hover:shadow-lg"
+              } transition-all duration-300 bg-card`}
             >
               {tier.highlighted && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold shadow-lg">
-                  Популярный
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary to-primary/80 text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg tracking-wider">
+                  ПОПУЛЯРНЫЙ
                 </div>
               )}
               <CardHeader className="text-center pb-8">
-                <CardTitle className="text-2xl mb-2">{tier.name}</CardTitle>
-                <div className="mt-4">
-                  <span className="text-4xl font-bold">
-                    {tier.price === "По запросу" ? (
-                      <span className="text-3xl">{tier.price}</span>
-                    ) : (
-                      <>
-                        <span className="text-lg font-normal text-muted-foreground">от </span>
-                        {tier.price}
-                        <span className="text-lg font-normal text-muted-foreground"> ₽</span>
-                      </>
-                    )}
-                  </span>
+                <CardTitle className="text-2xl mb-1 font-bold tracking-wider">{tier.name}</CardTitle>
+                <p className="text-sm text-muted-foreground mb-4">{tier.description}</p>
+                <div className="mt-2">
+                  <span className="text-4xl font-bold text-primary">{tier.price}</span>
                 </div>
               </CardHeader>
               <CardContent>
@@ -107,13 +107,16 @@ export function PricingSection() {
                     </li>
                   ))}
                 </ul>
-                <QuoteFormDialog
-                  packageName={tier.name}
-                  variant={tier.highlighted ? "default" : "outline"}
-                  className={`w-full ${tier.highlighted ? "shadow-lg shadow-primary/20" : ""}`}
+                <Button
+                  className={`w-full font-bold tracking-wider ${
+                    tier.highlighted
+                      ? "bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20"
+                      : "border border-primary/30 bg-transparent text-foreground hover:bg-primary/10 hover:border-primary"
+                  }`}
+                  asChild
                 >
-                  {tier.price === "По запросу" ? "Связаться с нами" : "Выбрать тариф"}
-                </QuoteFormDialog>
+                  <a href="#contact">{tier.cta}</a>
+                </Button>
               </CardContent>
             </Card>
           ))}
@@ -121,8 +124,9 @@ export function PricingSection() {
 
         <div className="mt-12 text-center">
           <p className="text-sm text-muted-foreground">
-            Все тарифы включают <span className="text-primary font-semibold">бесплатную настройку хостинга</span> и{" "}
-            <span className="text-primary font-semibold">SSL-сертификат</span>
+            Все привилегии —{" "}
+            <span className="text-primary font-bold">только косметика</span>
+            . Игровое преимущество купить нельзя.
           </p>
         </div>
       </div>

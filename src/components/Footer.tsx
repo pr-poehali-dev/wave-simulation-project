@@ -1,75 +1,94 @@
-import { Github, Linkedin, Twitter } from "lucide-react"
+import Icon from "@/components/ui/icon"
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-muted/30 py-12 px-4 sm:px-6 lg:px-8">
+    <footer className="border-t border-border bg-card/50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <h3 className="text-xl font-bold mb-4">CodeCraft</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              2025 CodeCraft. Все права защищены.
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+          <div className="md:col-span-2">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-2xl font-bold text-primary">M</span>
+              <span className="text-xl font-bold tracking-widest">ANASHKA</span>
+              <span className="ml-1 text-xs font-bold tracking-widest text-primary border border-primary/50 px-1.5 py-0.5 rounded">CRMP</span>
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
+              Одна из лучших копий Радмир РП. Честная экономика, живое сообщество, регулярные обновления. Твоя история начинается здесь.
             </p>
+            <div className="flex items-center gap-1.5 mt-4">
+              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-sm text-green-400 font-semibold">Сервер онлайн 24/7</span>
+            </div>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Навигация</h4>
+            <h4 className="font-bold mb-4 tracking-widest text-sm">НАВИГАЦИЯ</h4>
             <ul className="space-y-2">
-              <li>
-                <a href="#about" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  О нас
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Услуги
-                </a>
-              </li>
-              <li>
-                <a href="#portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Портфолио
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Контакты
-                </a>
-              </li>
+              {[
+                { href: "#about", label: "О проекте" },
+                { href: "#services", label: "Преимущества" },
+                { href: "#portfolio", label: "Будущее" },
+                { href: "#pricing", label: "Привилегии" },
+                { href: "#contact", label: "Контакты" },
+              ].map((item) => (
+                <li key={item.href}>
+                  <a href={item.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    {item.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Мы в соцсетях</h4>
-            <div className="flex gap-4">
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Linkedin className="h-5 w-5" />
-                <span className="sr-only">LinkedIn</span>
-              </a>
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Github className="h-5 w-5" />
-                <span className="sr-only">GitHub</span>
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
-              </a>
-            </div>
+            <h4 className="font-bold mb-4 tracking-widest text-sm">СООБЩЕСТВО</h4>
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors group"
+                >
+                  <Icon name="MessageCircle" fallback="Star" className="h-4 w-4 text-primary group-hover:scale-110 transition-transform" />
+                  Discord
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors group"
+                >
+                  <Icon name="Send" fallback="Star" className="h-4 w-4 text-primary group-hover:scale-110 transition-transform" />
+                  Telegram
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors group"
+                >
+                  <Icon name="Youtube" fallback="Star" className="h-4 w-4 text-primary group-hover:scale-110 transition-transform" />
+                  YouTube
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors group"
+                >
+                  <Icon name="Globe" fallback="Star" className="h-4 w-4 text-primary group-hover:scale-110 transition-transform" />
+                  play.manashka.ru
+                </a>
+              </li>
+            </ul>
           </div>
+        </div>
+
+        <div className="border-t border-border/50 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-muted-foreground">
+            © 2025 MANASHKA CRMP. Все права защищены.
+          </p>
+          <p className="text-xs text-muted-foreground/60">
+            Не аффилирован с Radmir RP / Anvil Interactive
+          </p>
         </div>
       </div>
     </footer>
